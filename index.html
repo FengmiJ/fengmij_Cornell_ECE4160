@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!-- 机器人实验课网页 - 全英文版本，带Lab跳转功能 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 网页标题：机器人实验课成果展示 -->
+    <title>Robotics Lab Experiment Showcase</title>
+    <!-- 内嵌样式，包含导航按钮美化，无需额外修改 -->
+    <style>
+        body {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        /* 导航按钮样式 */
+        .nav-buttons {
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-btn:hover {
+            background-color: #2980b9;
+        }
+        .code-box {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .lab-section {
+            margin: 60px 0;
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 12px;
+        }
+        .lab-info {
+            line-height: 1.8;
+            color: #34495e;
+            margin: 20px 0;
+        }
+        iframe {
+            border-radius: 8px;
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 网页头部标题 -->
+    <h1>🤖 Robotics Lab Experiment Results</h1>
+    <p class="lab-info">This webpage showcases all the experimental content of the robotics course, including experimental steps, code, images and demonstration videos.</p>
+
+    <!-- 核心：导航按钮区域 - 点击跳转至对应Lab（锚点链接） -->
+    <div class="nav-buttons">
+        <button class="nav-btn" onclick="location.href='#lab1'">Go to Lab 1</button>
+        <button class="nav-btn" onclick="location.href='#lab2'">Go to Lab 2</button>
+        <button class="nav-btn" onclick="location.href='#lab3'">Go to Lab 3</button>
+        <!-- 如需新增Lab，复制上面一行，修改数字即可（对应下面的lab4、lab5...） -->
+    </div>
+
+    <!-- Lab 1 区块 - 锚点id="lab1" 对应导航按钮 -->
+    <div class="lab-section" id="lab1">
+        <h2>Lab 1: Basic Robot Movement Control</h2>
+        <div class="lab-info">
+            <h3>Experiment Overview</h3>
+            <p>The purpose of this experiment is to master the basic movement control of the robot, including forward, backward, left turn and right turn. We use Python to write the control program and verify the effect on the physical robot.</p>
+            <p>Key experimental steps:</p>
+            <ol>
+                <li>Connect the robot to the computer via Bluetooth</li>
+                <li>Install the required Python control library</li>
+                <li>Write and run the movement control code</li>
+                <li>Record the robot's movement effect and adjust parameters</li>
+            </ol>
+        </div>
+
+        <h3>📝 Experimental Code</h3>
+        <div class="code-box">
+            <pre><code># Python code for basic robot movement control
+# Import the robot control library (simulated library for demonstration)
+import robot_control_lib as rcl
+
+# Initialize the robot
+robot = rcl.Robot()
+
+def basic_movement_demo():
+    """Demo of robot's basic movement functions"""
+    print("Robot starts moving forward...")
+    robot.move_forward(duration=3)  # Move forward for 3 seconds
+    
+    print("Robot starts turning left...")
+    robot.turn_left(duration=1)     # Turn left for 1 second
+    
+    print("Robot starts moving backward...")
+    robot.move_backward(duration=2) # Move backward for 2 seconds
+    
+    print("Robot starts turning right...")
+    robot.turn_right(duration=1)    # Turn right for 1 second
+    
+    print("Experiment completed, robot stops moving.")
+    robot.stop()
+
+# Call the demo function
+if __name__ == "__main__":
+    basic_movement_demo()
+</code></pre>
+        </div>
+
+        <h3>🖼️ Experimental Images</h3>
+        <p>Robot hardware connection and movement effect display:</p>
+        <img src="https://picsum.photos/1200/600?random=10" alt="Lab 1 - Robot hardware connection">
+        <img src="https://picsum.photos/1200/600?random=11" alt="Lab 1 - Robot movement demonstration">
+
+        <h3>🎬 Experimental Video</h3>
+        <p>Robot basic movement control demonstration video:</p>
+        <video controls>
+            <source src="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4" type="video/mp4">
+            Your browser does not support video playback. Please upgrade your browser and try again.
+        </video>
+        <p>Embedded experimental explanation video (replace with your own video link):</p>
+        <iframe src="//player.bilibili.com/player.html?aid=55631961&bvid=BV1xs411Q799&cid=97257967&page=1" 
+                scrolling="no" allowfullscreen="true"></iframe>
+    </div>
+
+    <!-- Lab 2 区块 - 锚点id="lab2" 对应导航按钮 -->
+    <div class="lab-section" id="lab2">
+        <h2>Lab 2: Robot Obstacle Avoidance Using Ultrasonic Sensors</h2>
+        <div class="lab-info">
+            <h3>Experiment Overview</h3>
+            <p>This experiment focuses on realizing the robot's obstacle avoidance function through ultrasonic sensors. The robot will detect the distance of obstacles in front in real time, and automatically adjust the movement direction to avoid collisions when the distance is less than the safe threshold.</p>
+            <p>Key experimental steps:</p>
+            <ol>
+                <li>Calibrate the ultrasonic sensor of the robot</li>
+                <li>Write code to read sensor distance data</li>
+                <li>Implement obstacle avoidance logic based on distance data</li>
+                <li>Test the obstacle avoidance effect in a complex environment</li>
+            </ol>
+        </div>
+
+        <h3>📝 Experimental Code</h3>
+        <div class="code-box">
+            <pre><code># Python code for robot obstacle avoidance with ultrasonic sensor
+import robot_control_lib as rcl
+import time
+
+# Initialize robot and ultrasonic sensor
+robot = rcl.Robot()
+ultrasonic_sensor = rcl.UltrasonicSensor()
+
+# Safe distance threshold (cm)
+SAFE_DISTANCE = 30
+
+def obstacle_avoidance_demo():
+    """Demo of robot's obstacle avoidance function"""
+    print("Obstacle avoidance system started...")
+    while True:
+        # Read current obstacle distance
+        distance = ultrasonic_sensor.get_distance()
+        print(f"Current obstacle distance: {distance} cm")
+        
+        if distance < SAFE_DISTANCE:
+            # Obstacle detected, perform avoidance action
+            print("Obstacle detected! Starting avoidance...")
+            robot.stop()
+            time.sleep(0.5)
+            robot.turn_right(duration=2)
+            robot.move_forward(duration=3)
+        else:
+            # No obstacle, move forward normally
+            robot.move_forward(duration=1)
+        
+        # Add a small delay to avoid data reading too fast
+        time.sleep(0.1)
+
+# Call the demo function (press Ctrl+C to stop)
+if __name__ == "__main__":
+    try:
+        obstacle_avoidance_demo()
+    except KeyboardInterrupt:
+        print("Experiment stopped manually.")
+        robot.stop()
+</code></pre>
+        </div>
+
+        <h3>🖼️ Experimental Images</h3>
+        <p>Ultrasonic sensor installation and obstacle avoidance test scene:</p>
+        <img src="https://picsum.photos/1200/600?random=20" alt="Lab 2 - Ultrasonic sensor installation">
+        <img src="https://picsum.photos/1200/600?random=21" alt="Lab 2 - Robot obstacle avoidance test">
+
+        <h3>🎬 Experimental Video</h3>
+        <p>Robot obstacle avoidance function demonstration video:</p>
+        <video controls>
+            <source src="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4" type="video/mp4">
+            Your browser does not support video playback. Please upgrade your browser and try again.
+        </video>
+    </div>
+
+    <!-- Lab 3 区块 - 锚点id="lab3" 对应导航按钮 -->
+    <div class="lab-section" id="lab3">
+        <h2>Lab 3: Robot Path Planning Based on Vision</h2>
+        <div class="lab-info">
+            <h3>Experiment Overview</h3>
+            <p>This experiment realizes the robot's autonomous path planning function through the vision module. The robot collects environmental images through the camera, identifies the target path and obstacles, and plans the optimal moving route to reach the designated target point.</p>
+            <p>Key experimental steps:</p>
+            <ol>
+                <li>Initialize the robot vision module and calibrate the camera</li>
+                <li>Implement image processing and path recognition algorithms</li>
+                <li>Write path planning and movement control code</li>
+                <li>Verify the path planning effect in the preset scene</li>
+            </ol>
+        </div>
+
+        <h3>📝 Experimental Code</h3>
+        <div class="code-box">
+            <pre><code># Python code for robot vision-based path planning
+import robot_control_lib as rcl
+import cv2
+import numpy as np
+
+# Initialize robot and vision module
+robot = rcl.Robot()
+vision_module = rcl.VisionModule()
+
+def path_planning_demo():
+    """Demo of robot's vision-based path planning function"""
+    print("Vision-based path planning system started...")
+    
+    # Capture environmental image
+    frame = vision_module.capture_image()
+    if frame is None:
+        print("Failed to capture image, experiment aborted.")
+        return
+    
+    # Process image and recognize path
+    processed_frame = vision_module.process_image(frame)
+    path_points = vision_module.recognize_path(processed_frame)
+    
+    if len(path_points) == 0:
+        print("No valid path detected.")
+        return
+    
+    print(f"Valid path detected, {len(path_points)} waypoints found.")
+    
+    # Follow the planned path to move
+    for point in path_points:
+        print(f"Moving to waypoint: ({point[0]}, {point[1]})")
+        robot.move_to_target(point[0], point[1])
+        time.sleep(1)
+    
+    print("Path planning completed, robot reached the target.")
+    robot.stop()
+
+# Call the demo function
+if __name__ == "__main__":
+    path_planning_demo()
+</code></pre>
+        </div>
+
+        <h3>🖼️ Experimental Images</h3>
+        <p>Vision module installation and path recognition effect:</p>
+        <img src="https://picsum.photos/1200/600?random=30" alt="Lab 3 - Robot vision module installation">
+        <img src="https://picsum.photos/1200/600?random=31" alt="Lab 3 - Path recognition effect display">
+
+        <h3>🎬 Experimental Video</h3>
+        <p>Robot vision-based path planning demonstration video:</p>
+        <video controls>
+            <source src="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4" type="video/mp4">
+            Your browser does not support video playback. Please upgrade your browser and try again.
+        </video>
+    </div>
+
+</body>
+</html>
