@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- Lab 1 独立网页 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1: Artemis and Bluetooth - REN, Junru</title>
+    <style>
+        body {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .nav-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 20px 0;
+        }
+        .nav-btn:hover {
+            background-color: #2980b9;
+        }
+        .code-box {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: "Fira Code", "Consolas", monospace;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .lab-info {
+            line-height: 1.8;
+            color: #34495e;
+            margin: 20px 0;
+        }
+        iframe {
+            border-radius: 8px;
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 返回首页按钮 -->
+    <button class="nav-btn" onclick="location.href='index.html'">← Back to Home Page</button>
+
+    <!-- Lab 1 全部内容（和原来的Lab1一致） -->
+    <h1>Lab 1: Artemis and Bluetooth</h1>
+    <div class="lab-info">
+        <h3>Experiment Overview</h3>
+        <p>The purpose of this experiment is to master the basic movement control of the robot, including forward, backward, left turn and right turn. We use Python to write the control program and verify the effect on the physical robot.</p>
+        <p>Key experimental steps:</p>
+        <ol>
+            <li>Connect the robot to the computer via Bluetooth</li>
+            <li>Install the required Python control library</li>
+            <li>Write and run the movement control code</li>
+            <li>Record the robot's movement effect and adjust parameters</li>
+        </ol>
+    </div>
+
+    <h3>📝 Experimental Code</h3>
+    <div class="code-box">
+        <pre><code># Python code for basic robot movement control
+# Import the robot control library (simulated library for demonstration)
+import robot_control_lib as rcl
+
+# Initialize the robot
+robot = rcl.Robot()
+
+def basic_movement_demo():
+    """Demo of robot's basic movement functions"""
+    print("Robot starts moving forward...")
+    robot.move_forward(duration=3)  # Move forward for 3 seconds
+    
+    print("Robot starts turning left...")
+    robot.turn_left(duration=1)     # Turn left for 1 second
+    
+    print("Robot starts moving backward...")
+    robot.move_backward(duration=2) # Move backward for 2 seconds
+    
+    print("Robot starts turning right...")
+    robot.turn_right(duration=1)    # Turn right for 1 second
+    
+    print("Experiment completed, robot stops moving.")
+    robot.stop()
+
+# Call the demo function
+if __name__ == "__main__":
+    basic_movement_demo()
+</code></pre>
+    </div>
+
+    <h3>🖼️ Experimental Images</h3>
+    <p>Robot hardware connection and movement effect display:</p>
+    <img src="https://picsum.photos/1200/600?random=10" alt="Lab 1 - Robot hardware connection">
+    <img src="https://picsum.photos/1200/600?random=11" alt="Lab 1 - Robot movement demonstration">
+    <!-- 替换你自己的图片链接：直接用原来的lab1_images路径即可，比如：
+    <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/你的图片名.jpg?raw=true" alt="Lab 1 - Your image">
+    -->
+
+    <h3>🎬 Experimental Video</h3>
+    <p>Robot basic movement control demonstration video:</p>
+    <video controls>
+        <source src="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4" type="video/mp4">
+        Your browser does not support video playback. Please upgrade your browser and try again.
+    </video>
+    <p>Embedded experimental explanation video (replace with your own video link):</p>
+    <iframe src="//player.bilibili.com/player.html?aid=55631961&bvid=BV1xs411Q799&cid=97257967&page=1" 
+            scrolling="no" allowfullscreen="true"></iframe>
+
+</body>
+</html>
