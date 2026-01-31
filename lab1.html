@@ -227,62 +227,95 @@
         <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/CMD.SPEED_MEASURE.png?raw=true" alt="" width="400">
         <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/result_for_CMD_SPEED_MEASURE.png?raw=true" alt="" width="400">
     </div>
+    <div class="Task6">
+        <h3>Task5 Message Speed</h3>
+        <p>I wrote a SEND_TIME_DATA case in Arduino side and data_handler function in python side, they can record up to 50 timestamps (the maximum array size) 
+            and then send and print in the jupyter lab python code.</p>
+        <h4>Arduino side:</h4>
+        <pre><code>
+        const int maximum_array_size = 50;
+        float timearray[maximum_array_size];
 
-
-
-
-
-
-
-    
-    <div class="code-box">
-        <pre><code># Python code for basic robot movement control
-# Import the robot control library (simulated library for demonstration)
-import robot_control_lib as rcl
-
-# Initialize the robot
-robot = rcl.Robot()
-
-def basic_movement_demo():
-    """Demo of robot's basic movement functions"""
-    print("Robot starts moving forward...")
-    robot.move_forward(duration=3)  # Move forward for 3 seconds
-    
-    print("Robot starts turning left...")
-    robot.turn_left(duration=1)     # Turn left for 1 second
-    
-    print("Robot starts moving backward...")
-    robot.move_backward(duration=2) # Move backward for 2 seconds
-    
-    print("Robot starts turning right...")
-    robot.turn_right(duration=1)    # Turn right for 1 second
-    
-    print("Experiment completed, robot stops moving.")
-    robot.stop()
-
-# Call the demo function
-if __name__ == "__main__":
-    basic_movement_demo()
-</code></pre>
+            
+        case SEND_TIME_DATA:
+         {
+             for (int i=0;i<maximum_array_size;i++)
+                  timearray[i]=millis();
+             Serial.println("Data storing completed!");
+             for (int i=0;i<maximum_array_size;i++){
+                  tx_estring_value.clear();
+                  tx_estring_value.append(timearray[i]);
+                  tx_characteristic_string.writeValue(tx_estring_value.c_str());
+                  delay(50);
+             }
+        </code></pre>
+        <h4>Python side:</h4>
+        <pre><code>
+        received_time=[]
+        def time_handler(uuid,byte_array):
+            global received_time
+            data_time=ble.bytearray_to_string(byte_array)[2:]
+            received_time.append(data_time)
+            print(f"Extracted Data:{data_time}")
+        ble.start_notify(ble.uuid['RX_STRING'], time_handler)
+        ble.send_command(CMD.SEND_TIME_DATA, "")
+        </code></pre>
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/CMD.SPEED_MEASURE.png?raw=true" alt="" width="400">
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/result_for_CMD_SPEED_MEASURE.png?raw=true" alt="" width="400">
     </div>
-
-    <h3>🖼️ Experimental Images</h3>
-    <p>Robot hardware connection and movement effect display:</p>
-    <img src="https://picsum.photos/1200/600?random=10" alt="Lab 1 - Robot hardware connection">
-    <img src="https://picsum.photos/1200/600?random=11" alt="Lab 1 - Robot movement demonstration">
-    <!-- 替换你自己的图片链接：直接用原来的lab1_images路径即可，比如：
-    <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/你的图片名.jpg?raw=true" alt="Lab 1 - Your image">
-    -->
-
-    <h3>🎬 Experimental Video</h3>
-    <p>Robot basic movement control demonstration video:</p>
-    <video controls>
-        <source src="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4" type="video/mp4">
-        Your browser does not support video playback. Please upgrade your browser and try again.
-    </video>
-    <p>Embedded experimental explanation video (replace with your own video link):</p>
-    <iframe src="//player.bilibili.com/player.html?aid=55631961&bvid=BV1xs411Q799&cid=97257967&page=1" 
-            scrolling="no" allowfullscreen="true"></iframe>
+    <div class="Task7">
+        <h3>Task7 GET_TEMP_READINGS</h3>
+        <p>This task is very similar to task 6, I just add a similar function in python side and add a new GET_TEMP_READINGS case in Arduino side, which can record both 
+            time and temp readings and link them together with “&” and send to computer.</p>
+        <h4>Arduino side:</h4>
+        <pre><code>
+        float temparray[maximum_array_size];
+        case GET_TEMP_READINGS:
+         {
+             for (int i=0;i<maximum_array_size;i++){
+                  timearray[i]=millis();
+                  temparray[i]=getTempDegF();}
+             Serial.println("Data storing completed!");
+             for (int i=0;i<maximum_array_size;i++){
+                  tx_estring_value.clear();
+                  tx_estring_value.append("Time:");
+                  tx_estring_value.append(timearray[i]);
+                  tx_estring_value.append(" & ");
+                  tx_estring_value.append("Temp:");
+                  tx_estring_value.append(temparray[i]);
+                  tx_characteristic_string.writeValue(tx_estring_value.c_str());
+                  delay(50);
+             }}
+        </code></pre>
+        <h4>Python side:</h4>
+        <pre><code>
+        received_temp=[]
+        def temp_handler(uuid,byte_array):
+            global received_temp
+            data_temp=ble.bytearray_to_string(byte_array)[2:]
+            received_temp.append(data_temp)
+            print(f"Extracted Data:{data_temp}")
+        ble.start_notify(ble.uuid['RX_STRING'], temp_handler)
+        ble.send_command(CMD.GET_TEMP_READINGS, "")
+        </code></pre>
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/CMD.SPEED_MEASURE.png?raw=true" alt="" width="400">
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/result_for_CMD_SPEED_MEASURE.png?raw=true" alt="" width="400">
+    </div>
+    <div class="Task8">
+        <h3>Task8 Comparison</h3>
+        <p>The first method sends data in real-time but is slower; the second collects data first then sends it super fast (some timestamps repeat because it crams points into 1ms).
+        First method pros: real-time updates/debugging; cons: slow. Second method pros: fast transfer; cons: not real-time (bad for fast-moving robots) + uses Artemis storage.
+        Use first for live robot updates/debugging; second for recording stunts/sensor data for later analysis.
+        Artemis has 384,000 bytes of RAM. With time/temp as 4-byte floats, it can store ~96,000 paired values max.
+        </p>
+    </div>
+    <div class="Discussion">
+        <h3>Discussion</h3>
+        <p>Overall, I learnt a lot from this lab, not only those problem-solving skills like using delay to prevent BLE overload, used a single shared array index to ensure 
+            one-to-one timestamp-temperature correspondence but also with the interfaces between hardware and software, Arduino and jupyter lab. These skills can cultivate my 
+            abilities in building robots and embedded systems! 
+    </div>
+"true"></iframe>
 
 </body>
 </html>
