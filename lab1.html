@@ -204,6 +204,29 @@
         </code></pre>
         <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/notification_handler.png?raw=true" alt="" width="400">
     </div>
+    <div class="Task5">
+        <h3>Task5 Message Speed</h3>
+        <p>For this task, I wrote a SPEED_MEASURE case, it can count and print the time stamps in 10s. After running in jupyter lab, 206 messages 
+            were received in 10 seconds. The rate is 20.6 messages/s.</p>
+        <pre><code>
+        case SPEED_MEASURE:
+            {
+            int count=1;
+            unsigned long beginning = millis();
+            while(millis() - beginning < 10000)  {
+                tx_estring_value.clear();
+                tx_estring_value.append("T:");
+                tx_estring_value.append(int(millis()));
+                tx_estring_value.append(" Count:");
+                tx_estring_value.append(count);
+                count++;
+                tx_characteristic_string.writeValue(tx_estring_value.c_str());
+                }
+             break;}
+        </code></pre>
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/CMD.SPEED_MEASURE.png?raw=true" alt="" width="400">
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/result_for_CMD_SPEED_MEASURE.png?raw=true" alt="" width="400">
+    </div>
 
 
 
