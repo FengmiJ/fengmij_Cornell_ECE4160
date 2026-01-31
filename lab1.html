@@ -225,10 +225,11 @@
              break;}
         </code></pre>
         <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/CMD.SPEED_MEASURE.png?raw=true" alt="" width="400">
+        <br>
         <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/result_for_CMD_SPEED_MEASURE.png?raw=true" alt="" width="400">
     </div>
     <div class="Task6">
-        <h3>Task5 Message Speed</h3>
+        <h3>Task6 SEND_TIME_DATA</h3>
         <p>I wrote a SEND_TIME_DATA case in Arduino side and data_handler function in python side, they can record up to 50 timestamps (the maximum array size) 
             and then send and print in the jupyter lab python code.</p>
         <h4>Arduino side:</h4>
@@ -260,8 +261,15 @@
         ble.start_notify(ble.uuid['RX_STRING'], time_handler)
         ble.send_command(CMD.SEND_TIME_DATA, "")
         </code></pre>
-        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/CMD.SPEED_MEASURE.png?raw=true" alt="" width="400">
-        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/result_for_CMD_SPEED_MEASURE.png?raw=true" alt="" width="400">
+        <iframe 
+      width="300"  <!-- 竖屏宽度，可根据需求调整（比如350） -->
+      height="533" <!-- 9:16比例计算：300 ÷ 9 × 16 ≈ 533，保证画面完整 -->
+      src="https://www.youtube.com/embed/-hMRCQv0xrw" 
+      title="Task2 Blink Shorts Demo" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen
+    ></iframe>
     </div>
     <div class="Task7">
         <h3>Task7 GET_TEMP_READINGS</h3>
@@ -316,7 +324,7 @@
             one-to-one timestamp-temperature correspondence but also with the interfaces between hardware and software, Arduino and jupyter lab. These skills can cultivate my 
             abilities in building robots and embedded systems! 
     </div>
-"true"></iframe>
+
 
 </body>
 </html>
