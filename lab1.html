@@ -233,6 +233,7 @@
         <p>I wrote a SEND_TIME_DATA case in Arduino side and data_handler function in python side, they can record up to 50 timestamps (the maximum array size) 
             and then send and print in the jupyter lab python code.</p>
         <h4>Arduino side:</h4>
+        <div class="code-box">
         <pre><code>
         const int maximum_array_size = 50;
         float timearray[maximum_array_size];
@@ -250,6 +251,7 @@
              }
         </code></pre>
         <h4>Python side:</h4>
+        <div class="code-box">
         <pre><code>
         received_time=[]
         def time_handler(uuid,byte_array):
@@ -275,6 +277,7 @@
         <p>This task is very similar to task 6, I just add a similar function in python side and add a new GET_TEMP_READINGS case in Arduino side, which can record both 
             time and temp readings and link them together with “&” and send to computer.</p>
         <h4>Arduino side:</h4>
+        <div class="code-box">
         <pre><code>
         float temparray[maximum_array_size];
         case GET_TEMP_READINGS:
@@ -295,6 +298,7 @@
              }}
         </code></pre>
         <h4>Python side:</h4>
+        <div class="code-box">
         <pre><code>
         received_temp=[]
         def temp_handler(uuid,byte_array):
