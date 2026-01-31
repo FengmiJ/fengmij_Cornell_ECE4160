@@ -124,6 +124,29 @@
         <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/UUID_arduino.png?raw=true" alt="" width="400">        
         <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/connect.png?raw=true" alt="" width="400">
     </div>
+    <div class="Task1">
+        <h3>Task1 ECHO</h3>
+        <p>Task 1 is to send a string value from the computer to the Artemis board, I added code in the ECHO case, as shown below the computer can get the message “Hihello”. </p>
+        <pre><code>
+        case ECHO:
+            char char_arr[MAX_MSG_SIZE];
+            // Extract the next value from the command string as a character array
+            success = robot_cmd.get_next_value(char_arr);
+            if (!success)
+                return;
+            tx_estring_value.clear();
+            tx_estring_value.append("Robot says-> ");
+            tx_estring_value.append(char_arr);
+            tx_characteristic_string.writeValue(tx_estring_value.c_str());
+            Serial.print("Sent back: ");
+            Serial.println(tx_estring_value.c_str());
+            break;
+        </code></pre>
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/MAC.png?raw=true" alt="" width="400">
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/UUID_python.png?raw=true" alt="" width="400">
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/UUID_arduino.png?raw=true" alt="" width="400">        
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/connect.png?raw=true" alt="" width="400">
+    </div>
 
 
 
