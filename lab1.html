@@ -144,6 +144,66 @@
         </code></pre>
         <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/Hihello.png?raw=true" alt="" width="400">
         </div>
+    <div class="Task2">
+        <h3>Task2 SEND_THREE_FLOATS</h3>
+        <p>Task2 here is to extract the three float numbers in Arduino Serial Monitor.</p>
+        <pre><code>
+        case SEND_THREE_FLOATS:
+            float f1,f2,f3;
+            success=robot_cmd.get_next_value(f1);
+            if (!success)
+                return;
+            success=robot_cmd.get_next_value(f2);
+            if (!success)
+                return;
+            success=robot_cmd.get_next_value(f3);
+            if (!success)
+                return;
+            Serial.print("The three floats are:");
+            Serial.print(f1);
+            Serial.print(" ");
+            Serial.print(f2);
+            Serial.print(" ");
+            Serial.print(f3);
+            break;
+        </code></pre>
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/3float.png?raw=true" alt="" width="400">
+    </div>
+    <div class="Task3">
+        <h3>Task3 GET_TIME_MILLIS</h3>
+        <p>I added code in the GET_TIME_MILLIS case, and then it can successfully print current time in ms.</p>
+        <pre><code>
+        case GET_TIME_MILLIS:{
+            unsigned long time1=millis();
+            char t[30];
+            sprintf(t,"%lu",time1);
+            Serial.print("T:");
+            Serial.println(t);
+            tx_estring_value.clear();
+            tx_estring_value.append("T:");
+            tx_estring_value.append(t);
+            tx_characteristic_string.writeValue(tx_estring_value.c_str());
+            break;}
+        </code></pre>
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/GET_TIME_MILLIS.png?raw=true" alt="" width="400">
+    </div>
+    <div class="Task4">
+        <h3>Task4 Notification Handler</h3>
+        <p>For this task, I add an additional function in jupyter lab called time_handler. It first converts the binary date into a string 
+            and then split it by finding “T:”. The example shown here indicates how it is performed in in the previous GET_TIME_MILLIS, and 
+            as we can see, it can print the time without the print command.</p>
+        <pre><code>
+        def time_handler(uuid,byte_array):
+            string_value = byte_array.decode("utf-8")
+            print("Received string:", string_value)
+            if "T:" in string_value:
+                time_millis = string_value.split(":")[1]
+                print(f"Extracted Time: {time_millis} ms")
+        ble.start_notify(ble.uuid['RX_STRING'], time_handler)
+        ble.send_command(CMD.GET_TIME_MILLIS, "")
+        </code></pre>
+        <img src="https://github.com/FengmiJ/fengmij_Cornell_ECE4160/blob/main/lab1_images/notification_handler.png?raw=true" alt="" width="400">
+    </div>
 
 
 
