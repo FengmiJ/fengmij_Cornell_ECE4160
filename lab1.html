@@ -240,10 +240,10 @@
 
         case SEND_TIME_DATA:
          {
-             for (int i=0;i<maximum_array_size;i++)
+             for (int i=0;i&lt;maximum_array_size;i++)
                   timearray[i]=millis();
              Serial.println("Data storing completed!");
-             for (int i=0;i<maximum_array_size;i++){
+             for (int i=0;i&lt;maximum_array_size;i++){
                   tx_estring_value.clear();
                   tx_estring_value.append(timearray[i]);
                   tx_characteristic_string.writeValue(tx_estring_value.c_str());
@@ -282,11 +282,11 @@
         float temparray[maximum_array_size];
         case GET_TEMP_READINGS:
          {
-             for (int i=0;i<maximum_array_size;i++){
+             for (int i=0;i&lt;maximum_array_size;i++){
                   timearray[i]=millis();
                   temparray[i]=getTempDegF();}
              Serial.println("Data storing completed!");
-             for (int i=0;i<maximum_array_size;i++){
+             for (int i=0;i&lt;maximum_array_size;i++){
                   tx_estring_value.clear();
                   tx_estring_value.append("Time:");
                   tx_estring_value.append(timearray[i]);
