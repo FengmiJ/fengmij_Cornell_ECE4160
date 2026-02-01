@@ -233,7 +233,7 @@
         <p>I wrote a SEND_TIME_DATA case in Arduino side and data_handler function in python side, they can record up to 50 timestamps (the maximum array size) 
             and then send and print in the jupyter lab python code.</p>
         <h4>Arduino side:</h4>
-        <div class="code-box">
+        
         <pre><code>
         const int maximum_array_size = 50;
         float timearray[maximum_array_size];
@@ -243,7 +243,7 @@
              for (int i=0;i < maximum_array_size;i++)
                   timearray[i]=millis();
              Serial.println("Data storing completed!");
-             for (int i=0;i&lt;maximum_array_size;i++){
+             for (int i=0;i < maximum_array_size;i++){
                   tx_estring_value.clear();
                   tx_estring_value.append(timearray[i]);
                   tx_characteristic_string.writeValue(tx_estring_value.c_str());
@@ -251,7 +251,7 @@
              }
         </code></pre>
         <h4>Python side:</h4>
-        <div class="code-box">
+        
         <pre><code>
         received_time=[]
         def time_handler(uuid,byte_array):
@@ -270,16 +270,16 @@
         <p>This task is very similar to task 6, I just add a similar function in python side and add a new GET_TEMP_READINGS case in Arduino side, which can record both 
             time and temp readings and link them together with “&” and send to computer.</p>
         <h4>Arduino side:</h4>
-        <div class="code-box">
+        
         <pre><code>
         float temparray[maximum_array_size];
         case GET_TEMP_READINGS:
          {
-             for (int i=0;i&lt;maximum_array_size;i++){
+             for (int i=0;i < maximum_array_size;i++){
                   timearray[i]=millis();
                   temparray[i]=getTempDegF();}
              Serial.println("Data storing completed!");
-             for (int i=0;i&lt;maximum_array_size;i++){
+             for (int i=0;i < maximum_array_size;i++){
                   tx_estring_value.clear();
                   tx_estring_value.append("Time:");
                   tx_estring_value.append(timearray[i]);
@@ -291,7 +291,7 @@
              }}
         </code></pre>
         <h4>Python side:</h4>
-        <div class="code-box">
+        
         <pre><code>
         received_temp=[]
         def temp_handler(uuid,byte_array):
